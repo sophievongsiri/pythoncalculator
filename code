@@ -1,0 +1,367 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Nov 27 17:49:51 2023
+
+@author: Jace Globlek
+"""
+
+import math
+import statistics
+
+# Variables for storing numbers and operations
+history = []
+variables={}
+
+# This function adds two numbers and stores the result.
+def Addition():
+    num1= float(input("Enter the first number: "))
+    num2= float(input("Enter the second number: "))
+    answer = num1 + num2
+    print("The answer is", answer)
+    history.append(f"{num1} + {num2} = {answer}")
+
+# This function subtracts two numbers and stores the result.
+def Subtraction():
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
+    answer = num1 - num2
+    print("The answer is", answer)
+    history.append(f"{num1} - {num2} = {answer}")
+
+# This function multiplies two numbers and stores the result.
+def Multiplication():
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
+    answer = num1 * num2
+    print("The answer is", answer)
+    history.append(f"{num1} * {num2} = {answer}")
+
+# This function multiplies two numbers and stores the result.
+def Division():
+    num1= float(input("Enter the first number: "))
+    num2= float(input("Enter the second number: "))
+    answer = num1/num2
+    print("The answer is", answer)
+    history.append(f"{num1} / {num2} = {answer}")
+
+# This function raises a number to a given power and stores the result.
+def Exponentiation():
+    num1 = float(input("Enter the base number: "))
+    num2 = float(input("Enter the exponent: "))
+    answer = num1 ** num2
+    print("The answer is", answer)
+    history.append(f"{num1} ^ {num2} = {answer}")
+
+# This function calculates the square root of a number and stores the result.
+def Square_root():
+    num = int(input('Enter the number you would like to take the square root of: '))
+    x = math.sqrt(num)
+    print(x)
+    history.append(f"Square root of {num} = {x}")
+
+# This function calculates the absolute value of a number and stores the result.
+def Absolute_value():
+    num1=float(input("Enter the number you would like to find the absolute value of: "))
+    if num1>=0:
+        print("The absolute value of", num1, "is", num1)
+    if num1<0:
+        num2=num1*(-1)
+        print("The absolute value of", num1, "is", num2)     
+        history.append(f"Absolute value of {num1} = {num2}")
+
+# This function calculates the percentage of a number with respect to another number and stores the result.
+def Percentages():
+    choice = int(input("For a percentage of a number enter 1, for what percent is a number of another number enter 2: "))
+    if choice == 1:
+        l = float(input("Enter the percentage of the number: "))
+        m = float(input("Enter the number: "))
+        print(l, '% of', m, 'is', float((l * m)) / 100)
+    elif choice == 2:
+        n = float(input("Enter the first number: "))
+        p = float(input("Enter the second number: "))
+        print(n, 'is',(float(n) / float(p)) * 100, '% of',p)
+    else:
+        print('Not a valid option')    
+        history.append(f"{l} is {m}% of {100}")
+
+# This function calculates the remainder when one number is divided by another and stores the result.
+def Modulus():
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
+    answer = num1 % num2
+    print("The answer is", answer)
+    history.append(f"The remainder of {num1} / {num2} is {answer}")
+
+# This function allows the user to enter a series of numbers and calculates the average of these numbers.
+def Mean():
+    print("Enter the set of numbers one by one. Answer done, when done.")
+    answer=(input("Number:" ))
+    numlist=[]
+    while answer != "done":
+        numlist.append(float(answer))
+        answer=input("Number:" )
+    sumlist=0
+    for x in numlist:
+        sumlist=sumlist+x
+    mean=sumlist/len(numlist)
+    print("The mean of", numlist, "is", mean)
+    history.append(f"The mean of {numlist} is {mean}")
+
+# This function calculates the median of a list of numbers and stores the result.
+def Median():
+   n = int(input('Enter the number of elements in the data set: '))
+   l = []
+   print("Please enter each number of the data set one at a time followed by enter: ")
+   for i in range(0,n):
+       p = int(input())
+       l.append(p)
+   median = statistics.median(l)
+   print("The median of the data set is",median)
+   history.append(f"The median of {l} is {median}")
+
+# This function calculates the mode of a list of numbers and stores the result.
+def Mode():
+    print("Enter the set of numbers one by one. Answer done, when done.")
+    answer=(input("Number:" ))
+    numlist=[]
+    while answer != "done":
+        numlist.append(float(answer))
+        answer=input("Number:" )
+    dictnum = {}
+    for x in numlist:
+        if x in dictnum:
+            dictnum[x] += 1
+        else:
+            dictnum[x] = 1
+    maxfreq = max(dictnum.values())
+    mode = [k for k, v in dictnum.items() if v == maxfreq]
+    print("The mode of", numlist, "is", mode)
+    history.append(f"The mode of {numlist} is {mode}")    
+
+# This function calculates the range of a list of numbers and stores the result.
+def Range():
+    print("Enter the set of numbers one by one. Answer done, when done.")
+    answer=(input("Number:" ))
+    numlist=[]
+    while answer != "done":
+        numlist.append(float(answer))
+        answer=input("Number:" )
+    range_ = max(numlist) - min(numlist)
+    print("The range of", numlist, "is", range_)
+    history.append(f"The range of {numlist} is {range_}")    
+
+# This function calculates the standard deviation of a list of numbers and stores the result.
+def Standard_Deviation():
+    print("Enter the set of numbers one by one. Answer done, when done.")
+    choice = (input("Number:" ))
+    numlist=[]
+    while choice != "done":
+        numlist.append(float(choice))
+        choice = input("Number:" )
+    mean = sum(numlist)/len(numlist)
+    variance = sum((x-mean)**2 for x in numlist)/len(numlist)
+    standard_deviation=math.sqrt(variance)
+    print("The standard deviation of", numlist, "is", standard_deviation)
+    history.append(f"The standard deviation of {numlist} is {standard_deviation}")
+
+# This function calculates all prime numbers within a given range and stores the result.
+def Prime_Numbers_in_Range():
+   num1 = int(input('Enter the beginning number of the range you would like to test: '))
+   num2 = int(input('Enter the ending number of the range you would like to test: '))
+   prime_list = []
+   for i in range(num1, num2 + 1):
+       if i <= 0 or i == 1:
+           continue
+       else:
+           for k in range(2, int(i/2)+1):
+               if i % k == 0:
+                   break
+           else:
+               prime_list.append(i)
+   print('The prime numbers in the range are:',prime_list)
+   history.append(f"The prime numbers in range of {num1} to {num2} is {prime_list}")
+
+# This function tests if a given number is prime and stores the result.    
+def Test_if_Prime():
+    num1=int(input("Enter the number you would like to test: "))
+    if num1==1:
+        print(num1, "is not prime")
+        history.append(f"{num1} is not prime")
+    else:
+        prime=True
+        for x in range(2, num1):
+            if num1%x==0:
+                prime=False
+                break
+    if prime:
+        print(num1, "is prime")
+        history.append(f"{num1} is prime")
+    else:
+        print(num1, "is not prime")
+        history.append(f"{num1} is not prime")
+
+# This function calculates the factorial of a given number and stores the result.
+def Factorial():
+   num=int(input("Enter the number you want to find the factorial of: "))
+   fact=1
+   for i in range(1,num+1):
+       fact=fact*i
+   print("The factorial of", num, "is", fact)
+   history.append(f"The factorial of {num} is {fact}")
+
+# This function generates the Fibonacci sequence up to a given number of terms and stores the result.
+def Fibonacci():
+    num = int(input("Enter the term: "))
+    if num == 0:
+        print("The Fibonacci sequence is 0")
+    elif num == 1:
+        print("The Fibonacci sequence is 0, 1")
+    else:
+        fib_sequence = [0, 1]
+        for i in range(2, num):
+            fib_sequence.append(fib_sequence[i-1] + fib_sequence[i-2])
+        print("The Fibonacci sequence is", fib_sequence)
+        history.append(f"The Fibonacci sequence of {num} is {fib_sequence}")
+
+# This function rounds the number to a whole and stores the result.        
+def Rounding():
+    num1=float(input("Enter your number: "))
+    num1=round(num1)
+    print("The new integer is", num1)
+    history.append(f"The new integer is {num1}")
+
+# This function solves a quadratic equation and stores the result.
+def Solving_Quadratics():
+    print("Using the equation ax^2+bx+c, enter the a, b, and c values: ")
+    a=float(input("a=" ))
+    b=float(input("b=" ))
+    c=float(input("c=" ))
+    if (b**2-(4*a*c))>0:
+        positive_quadratic=(-b+((b**2-(4*a*c))**.5))/(2*a)
+        negative_quadratic=(-b-((b**2-(4*a*c))**.5))/(2*a)
+        print(f"The answers for {a}x^2 + {b}x + {c} are {positive_quadratic} and {negative_quadratic}")
+        result = f"The answers for {a}x^2 + {b}x + {c} are {positive_quadratic} and {negative_quadratic}"
+        history.append(result)
+    elif (b**2-(4*a*c))==0:
+        one_quadratic = (-b/(2*a))
+        print(f"The answers for {a}x^2 + {b}x + {c} is {one_quadratic}")
+        result = f"The answers for {a}x^2 + {b}x + {c} is {one_quadratic}"
+        history.append(result)
+    else:
+        print(f"The equation {a}x^2 + {b}x + {c} has no real answers")
+        result = f"The equation {a}x^2 + {b}x + {c} has no real answers"
+        history.append(result)    
+
+# This function stores specific numbers (variables) with their corresponding values. 
+def Store_Specific_Numbers():
+    while True:
+        variable_name = input("Enter a letter (or stop to exit): ")
+        if variable_name.lower() == 'stop':
+            break
+        try:
+            number = float(input("Enter a number you would like to store: "))
+            variables[variable_name] = number
+            print(f"Variable '{variable_name}' stored with the value {number}")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+    return variables
+
+# This function prints all the stored numbers (variables) and their corresponding values.
+def Print_Stored_Numbers():
+    print("Stored Variables:")
+    for variable, number in variables.items():
+        print(f"{variable}: {number}")
+
+# This function prints the history of operations performed using the calculator.   
+def Print_History():
+    print("\nHistory:")
+    for i in range(len(history)):
+        print("{}. {}".format(i + 1, history[i]))
+
+# This function displays a menu of diffrent mathmatical operations for the calculator.                 
+def Menu():
+    while True:
+        print("\nWelcome to the calculator!")
+        print("Please select an operation:")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Power/Exponent")
+        print("6. Square root")
+        print("7. Absolute value")
+        print("8. Percentages")
+        print("9. Modulus")
+        print("10. Mean")
+        print("11. Median")
+        print("12. Mode")
+        print("13. Range")
+        print("14. Standard Deviation")
+        print("15. Prime Numbers in Range")
+        print("16. Test if Prime")
+        print("17. Factorial")
+        print("18. Fibonacci")
+        print("19. Rounding")
+        print("20. Solving Quadratics")
+        print("21. Store Specific Numbers")
+        print("22. Stored Numbers")
+        print("23. History")
+        print("24. Exit")
+        
+        operation = input("Enter the number of the operation you want to perform: ")
+        
+        if operation == '1':
+            Addition()
+        elif operation == '2':
+            Subtraction()
+        elif operation == '3':
+            Multiplication()
+        elif operation == '4':
+            Division()
+        elif operation == '5':
+            Exponentiation()
+        elif operation == '6':
+            Square_root()
+        elif operation == '7':
+            Absolute_value()
+        elif operation == '8':
+            Percentages()
+        elif operation == '9':
+            Modulus()
+        elif operation == '10':
+            Mean()
+        elif operation == '11':
+            Median()
+        elif operation == '12':
+            Mode()
+        elif operation == '13':
+            Range()
+        elif operation == '14':
+            Standard_Deviation()
+        elif operation == '15':
+            Prime_Numbers_in_Range()
+        elif operation == '16':
+            Test_if_Prime()
+        elif operation == '17':
+            Factorial()
+        elif operation == '18':
+            Fibonacci()
+        elif operation == '19':
+            Rounding()
+        elif operation == '20':
+            Solving_Quadratics()
+        elif operation == '21':
+            Store_Specific_Numbers()
+        elif operation == '22':
+            Print_Stored_Numbers()
+        elif operation == '23':
+            Print_History()
+        elif operation == '24':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid input. Please try again.")
+            
+if __name__ == "__main__":
+    Menu()
+    
